@@ -1,0 +1,183 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  5. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/*
+  8. Remove links defaults
+*/
+a:is(:link, :visited) {
+  display: inline-block;
+  text-decoration: none;
+}
+
+:root {
+  /* ## Colors */
+
+  --Bright-orange: #e38826;
+  --Dark-cyan: #006970;
+  --Very-dark-cyan: #004241;
+  --Transparent-white-paragraphs: #ffffffbf;
+  --Very-light-gray: #f2f2f2; /*(background, headings, buttons)*/
+
+  /* ## Typography */
+  --font-heading: "Big Shoulders Display", sans-serif;
+  --font-body: "Lexend Deca", sans-serif;
+  --Text-Preset-1: 700 calc((40 / 16) * 1rem) var(--font-heading);
+  --Text-Preset-2: 400 calc((15 / 16) * 1rem) / 1.6 var(--font-body);
+
+  /* ## Spacing */
+  --XL-64: calc((64 / 16) * 1rem);
+  --L-48: calc((48 / 16) * 1rem);
+  --M-32: calc((32 / 16) * 1rem);
+  --S-28: calc((28 / 16) * 1rem);
+  --XS-20: calc((20 / 16) * 1rem);
+
+  /* mobile */
+  --Card-Width: calc((450 / 16) * 1rem);
+}
+body {
+  background-color: var(--Very-light-gray);
+  color: var(--Transparent-white-paragraphs);
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-component {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 0.5rem;
+  margin: var(--XL-64) var(--XS-20);
+  overflow: hidden;
+}
+
+/********** CARD **********/
+/**************************/
+.card {
+  font: var(--Text-Preset-2);
+  color: var(--Transparent-white-paragraphs);
+
+  padding: var(--L-48);
+  max-width: var(--Card-Width);
+
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: var(--M-32);
+}
+.orange-card {
+  background-color: var(--Bright-orange);
+}
+.cyan-card {
+  background-color: var(--Dark-cyan);
+}
+.green-card {
+  background-color: var(--Very-dark-cyan);
+}
+/**************************/
+
+.card-icon {
+  width: 4rem;
+  height: 2.5rem;
+}
+.card-title {
+  font: var(--Text-Preset-1);
+  color: var(--Very-light-gray);
+  text-transform: uppercase;
+}
+
+/********** Button **********/
+/****************************/
+.btn:is(:link, :visited) {
+  font: inherit;
+  background-color: var(--Very-light-gray);
+
+  margin-top: auto;
+  padding: 0.75rem var(--S-28);
+  border-radius: var(--L-48);
+  transition: background-color 0.3s;
+}
+.btn-orange:is(:link, :visited) {
+  color: var(--Bright-orange);
+}
+.btn-cyan:is(:link, :visited) {
+  color: var(--Dark-cyan);
+}
+.btn-green:is(:link, :visited) {
+  color: var(--Very-dark-cyan);
+}
+
+.btn:is(:hover, :active) {
+  color: var(--Very-light-gray);
+  background-color: transparent;
+  outline: 2px solid var(--Very-light-gray);
+}
+
+/*****************************/
+/********** QUERIES **********/
+/*****************************/
+@media (min-width: 56.25rem) {
+  :root {
+    --Card-Width: calc((307 / 16) * 1rem);
+  }
+  .card-component {
+    flex-direction: row;
+    margin: var(--XL-64) var(--M-32);
+  }
+  .card-text {
+    margin-bottom: 3.25rem;
+  }
+}
